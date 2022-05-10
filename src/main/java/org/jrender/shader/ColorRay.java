@@ -1,15 +1,15 @@
-package org.anut.jrender.shader;
+package org.jrender.shader;
 
-import org.anut.jrender.space.Vector3D;
+import org.jrender.space.Ray3D;
 
 public class ColorRay {
     private Color color;
-    private Vector3D direction;
+    private Ray3D ray;
     private double blendFactor; // 1 = color; 0 = otherColor
 
-    public ColorRay(Color color, Vector3D direction, double blendFactor) {
+    public ColorRay(Color color, Ray3D ray, double blendFactor) {
         this.color = color;
-        this.direction = direction;
+        this.ray = ray;
         this.blendFactor = blendFactor;
     }
 
@@ -21,12 +21,12 @@ public class ColorRay {
         this.color = color;
     }
 
-    public Vector3D getDirection() {
-        return direction;
+    public Ray3D getRay() {
+        return ray;
     }
 
-    public void setDirection(Vector3D direction) {
-        this.direction = direction;
+    public void setRay(Ray3D ray) {
+        this.ray = ray;
     }
 
     public double getBlendFactor() {

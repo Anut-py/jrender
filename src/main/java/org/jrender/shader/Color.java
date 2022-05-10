@@ -1,4 +1,4 @@
-package org.anut.jrender.shader;
+package org.jrender.shader;
 
 public class Color {
     private double r;
@@ -33,5 +33,22 @@ public class Color {
 
     public void setB(double b) {
         this.b = b;
+    }
+
+    public java.awt.Color toAWT() {
+        return new java.awt.Color((int) r, (int) g, (int) b);
+    }
+
+    public int getRGB() {
+        return (int) r << 16 | (int) g << 8 | (int) b;
+    }
+
+    @Override
+    public String toString() {
+        return "Color{" +
+                "r=" + r +
+                ", g=" + g +
+                ", b=" + b +
+                '}';
     }
 }

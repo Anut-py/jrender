@@ -1,12 +1,9 @@
-package org.anut.jrender.shader.impl;
+package org.jrender.shader.impl;
 
-import org.anut.jrender.shader.Color;
-import org.anut.jrender.shader.ColorRay;
-import org.anut.jrender.shader.Shader;
-import org.anut.jrender.space.Point3D;
-import org.anut.jrender.space.Solid3D;
-
-import java.util.function.Consumer;
+import org.jrender.shader.Color;
+import org.jrender.shader.ColorRay;
+import org.jrender.shader.Shader;
+import org.jrender.space.*;
 
 public class DiffuseShader implements Shader {
     private Solid3D solid;
@@ -48,7 +45,7 @@ public class DiffuseShader implements Shader {
     }
 
     @Override
-    public void color(Point3D ray, Point3D point, Consumer<ColorRay> next) {
-        next.accept(new ColorRay(color, point.getNormal(), roughness));
+    public ColorRay color(Ray3D ray, Vector3D point, Face3D face) {
+        return new ColorRay(color, new Ray3D(point, VectorUtils.reflect(ray.getDirection(), face.getNormal())), roughness);
     }
 }
